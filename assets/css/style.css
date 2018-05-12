@@ -1,0 +1,78 @@
+body{
+    font-family: 'cinzel', sans-serif;
+    background: url("../images/starwars-background.jpg");
+}
+header{
+    font-family: 'cinzel', sans-serif;
+    text-align: right;
+    color: #eeeeee;
+    font-size: 48px;
+    margin-right: 100px;
+}
+.characters{
+    margin-left: 50px;
+}
+.countainer{
+    width: auto;
+    height: auto;
+}
+#obiwan{
+    float: left;
+    padding: 5px 25px;
+    background-color: #eeeeee;
+    border: 3px solid green;
+}
+#quigon{
+    float: left;
+    padding: 5px 25px;
+    background-color: #eeeeee;
+    border: 3px solid green;
+}
+#maul{
+    float: left;
+    padding: 5px 25px;
+    background-color: #eeeeee;
+    border: 3px solid green;
+}
+#sidious{
+    float: left;
+    padding: 5px 25px;
+    background-color: #eeeeee;
+    border: 3px solid green;
+}
+.charactername{
+    text-align: center;
+}
+.characterhp{
+    text-align: center;
+}
+.battle{
+    margin-left: 50px;
+}
+.yourcharacter{
+    clear: both;
+    color: #eeeeee;
+    font-size: 36px;
+    
+}
+.enemies{
+    color: #eeeeee;
+    font-size: 36px;
+    
+}
+.fight{
+    color: #eeeeee;
+    font-size: 36px;
+    
+}
+.enemies{
+    padding-top: 300px;
+}
+#attack{
+    margin-left: 50px;
+}
+.defender{
+    margin-left: 50px;
+    color: #eeeeee;
+    font-size: 36px;
+}
