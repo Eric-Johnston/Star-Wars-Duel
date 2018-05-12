@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-//
-=======
 // Global variables
 
 var charSelected = false;
@@ -67,4 +64,3 @@ function defenderSelect(defenderSelect) {
 function setEnemies(){
     
 }
->>>>>>> 78111364d4d44e906156a2faa6033321f6837d39
