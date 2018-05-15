@@ -49,29 +49,34 @@ header{
 .battle{
     margin-left: 50px;
 }
-.yourcharacter{
+#your-character{
     clear: both;
     color: #eeeeee;
     font-size: 36px;
     
 }
 .enemies{
+    clear: both;
     color: #eeeeee;
     font-size: 36px;
-    
-}
-.fight{
-    color: #eeeeee;
-    font-size: 36px;
-    
-}
-.enemies{
     padding-top: 300px;
 }
+.fight{
+    clear: both;
+    color: #eeeeee;
+    font-size: 36px;
+    
+}
+
+#enemies-available{
+    margin-right: 50px;
+}
 #attack{
+    clear: both;
     margin-left: 50px;
 }
 .defender{
+    clear: both;
     margin-left: 50px;
     color: #eeeeee;
     font-size: 36px;
