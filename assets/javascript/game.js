@@ -51,12 +51,12 @@ function playerSelect(charSelected) {
     player.counterAP = charSelected.counterAP;
 }
 
-function defenderSelect(defenderSelect) {
-    defender.name = enemySelected.name;
-    defender.healthPoints = enemySelected.healthPoints;
-    defender.baseAttack = enemySelected.baseAttack;
-    defender.attackPower = enemySelected.attackPower;
-    defender.counterAP = enemySelected.counterAP;
+function defenderSelect(enemySelected) {
+    enemy.name = enemySelected.name;
+    enemy.healthPoints = enemySelected.healthPoints;
+    enemy.baseAttack = enemySelected.baseAttack;
+    enemy.attackPower = enemySelected.attackPower;
+    enemy.counterAP = enemySelected.counterAP;
 }
 
 //
@@ -80,6 +80,14 @@ $(document).ready(function(){
             setEnemies();
         }
 
+        else if((charSelected == true) && (enemySelected == false)){
+            if($("#obiwan").hasClass("enemies")) {
+                defenderSelect(obiWan);
+                defenderSelect = true;
+                $("#obiwan").removeClass("enemies").addClass("defender-char");
+                $(".defender").append(this);
+            }
+        }
     });
 
     $("#quigon").on("click", function() {
@@ -91,6 +99,15 @@ $(document).ready(function(){
             $("#quigon").removeClass("available-characters").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
+        }
+
+        else if((charSelected == true) && (enemySelected == false)){
+            if($("#obiwan").hasClass("enemies")) {
+                defenderSelect(obiWan);
+                defenderSelect = true;
+                $("#obiwan").removeClass("enemies").addClass("defender-char");
+                $(".defender").append(this);
+            }
         }
     });
 
@@ -104,6 +121,15 @@ $(document).ready(function(){
             $("#your-character").append($(this))
             setEnemies();
         }
+        
+        else if((charSelected == true) && (enemySelected == false)){
+            if($("#obiwan").hasClass("enemies")) {
+                defenderSelect(obiWan);
+                defenderSelect = true;
+                $("#obiwan").removeClass("enemies").addClass("defender-char");
+                $(".defender").append(this);
+            }
+        }
     });
 
     $("#sidious").on("click", function() {
@@ -115,6 +141,15 @@ $(document).ready(function(){
             $("#sidious").removeClass("available-characters").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
+        }
+
+        else if((charSelected == true) && (enemySelected == false)){
+            if($("#obiwan").hasClass("enemies")) {
+                defenderSelect(obiWan);
+                defenderSelect = true;
+                $("#obiwan").removeClass("enemies").addClass("defender-char");
+                $(".defender").append(this);
+            }
         }
     });
 
