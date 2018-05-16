@@ -7,7 +7,7 @@ header{
     text-align: right;
     color: #eeeeee;
     font-size: 48px;
-    margin-right: 100px;
+    margin-right: 75px;
 }
 .characters{
     margin-left: 50px;
@@ -42,34 +42,45 @@ header{
 }
 .charactername{
     text-align: center;
+    font-weight: 600;
+    font-size: 14px
 }
 .characterhp{
     text-align: center;
+    font-weight: 600;
+    font-size: 14px;
 }
 .battle{
-    margin-left: 50px;
+    padding-left: 50px;
 }
-#your-character{
+.user-character{
     clear: both;
     color: #eeeeee;
     font-size: 36px;
     
 }
+#your-character{
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+}
 .enemies{
     clear: both;
     color: #eeeeee;
     font-size: 36px;
-    padding-top: 300px;
+    padding-top: 150px;
+}
+.enemies-available{
+    clear: both;
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
 }
 .fight{
     clear: both;
     color: #eeeeee;
     font-size: 36px;
     
-}
-
-#enemies-available{
-    margin-right: 50px;
 }
 #attack{
     clear: both;
