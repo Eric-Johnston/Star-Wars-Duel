@@ -81,16 +81,15 @@ $(document).ready(function(){
             setEnemies();
         }
 
-        else if((charSelected == true) && (enemySelected == false)){
-            if($("#obiwan").hasClass("enemy-character")) {
-                $("gametxt").empty();
-                defenderSelect(obiWan);
+        else if ($(this).attr("id") === "quigon".click(function(){
+                defenderSelect(quiGon);
+                console.log("Defender is " + enemy);
                 enemySelected = true;
-                $("#obiwan").removeClass("enemies").addClass("defender-char");
-                $(".defender-char").append(this);
-            }
-        }
+                $("#quigon").removeClass("enemies-available").addClass("defender-char");
+                $("#quigon").append($(".defender-char"));
+        }));
     });
+
 
     $("#quigon").click(function() {
         
@@ -102,16 +101,6 @@ $(document).ready(function(){
             $("#quigon").removeClass("available-characters").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
-        }
-
-        else if((charSelected == true) && (enemySelected == false)){
-            if($("#quigon").hasClass("enemies")) {
-                $("gametxt").empty();
-                defenderSelect(quiGon);
-                enemySelected = true;
-                $("#quigon").removeClass("enemies").addClass("defender-char");
-                $(".defender-char").append(this);
-            }
         }
     });
 
@@ -126,16 +115,6 @@ $(document).ready(function(){
             $("#your-character").append($(this))
             setEnemies();
         }
-        
-        else if((charSelected == true) && (enemySelected == false)){
-            if($("#maul").hasClass("enemies")) {
-                $("gametxt").empty();
-                defenderSelect(darthMaul);
-                enemySelected = true;
-                $("#maul").removeClass("enemies").addClass("defender-char");
-                $(".defender-char").append(this);
-            }
-        }
     });
 
     $("#sidious").click(function() {
@@ -148,16 +127,6 @@ $(document).ready(function(){
             $("#sidious").removeClass("available-characters").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
-        }
-
-        else if((charSelected == true) && (enemySelected == false)){
-            if($("#sidious").hasClass("enemies")) {
-                $("gametxt").empty();
-                defenderSelect(darthSidious);
-                enemySelected = true;
-                $("#sidious").removeClass("enemies").addClass("defender-char");
-                $(".defender-char").append(this);
-            }
         }
     });
 
