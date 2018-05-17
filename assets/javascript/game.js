@@ -73,11 +73,12 @@ function resetGame(){
     $("#quigon").children(".characterhp").html("Health: " + quiGon.healthPoints);
     $("maul").children(".characterhp").html("Health: " + darthMaul.healthPoints);
     $("#sidious").children(".characterhp").html("Health: " + darthSidious.healthPoints);
-    $("#obiwan").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
-    $("#quigon").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
-    $("#maul").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
-    $("#sidious").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
-    $(".characters").append(".available-characters")
+    $("#obiwan").removeClass("defender-char defender player-char").addClass("available-characters")
+    $("#quigon").removeClass("defender-char defender player-char").addClass("available-characters")
+    $("#maul").removeClass("defender-char defender player-char").addClass("available-characters")
+    $("#sidious").removeClass("defender-char defender player-char").addClass("available-characters")
+    $(".available-characters").show();
+    $(".characters").append($(this));
 
     
     
