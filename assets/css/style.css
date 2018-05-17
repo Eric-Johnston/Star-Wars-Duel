@@ -86,6 +86,10 @@ header{
     clear: both;
     margin-left: 50px;
 }
+#reset{
+    clear: both;
+    margin-left: 50px;
+}
 .defender{
     clear: both;
     margin-left: 50px;
@@ -97,4 +101,10 @@ header{
     color: black;
     font-size: 14px;
     font-weight: 600;
+}
+#gametxt p{
+    clear: both;
+    margin-left: 50px;
+    color: #eeeeee;
+    font-size: 20px;
 }

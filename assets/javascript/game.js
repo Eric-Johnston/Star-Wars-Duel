@@ -11,18 +11,18 @@ var gameOver = false;
 
 var obiWan = {
     name: "Obi-Wan",
-    healthPoints: 120,
+    healthPoints: 125,
     baseAttack: 6,
     attackPower:  9,
-    counterAP: 8,
+    counterAP: 9,
 }
 
 var quiGon = {
     name: "Qui-Gon",
-    healthPoints: 130,
+    healthPoints: 135,
     baseAttack: 8,
     attackPower: 9,
-    counterAP: 9
+    counterAP: 10,
 }
 
 var darthMaul = {
@@ -30,15 +30,15 @@ var darthMaul = {
     healthPoints: 140,
     baseAttack: 8,
     attackPower: 10,
-    counterAP: 10,
+    counterAP: 11,
 }
 
 var darthSidious = {
-    name: "Darth Sideous",
+    name: "Darth Sidious",
     healthPoints: 160,
     baseAttack: 9,
     attackPower: 12,
-    counterAP: 12
+    counterAP: 13,
 }
 
 //
@@ -69,28 +69,60 @@ function setEnemies(){
 //
 $(document).ready(function(){
 
+    $("#reset").hide();
+
     $("#obiwan").click(function() {
 
         if(charSelected == false){
             $("gametxt").empty();
             playerSelect(obiWan);
             charSelected = true;
+            console.log("Your character is")
             console.log(player);
-            $("#obiwan").removeClass("available-characters").attr("your-character")
+            console.log("----------------------")
+            $("#obiwan").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
         }
-
-        else if ($(this).attr("id") === "quigon".click(function(){
+        
+        if(charSelected == true){
+            $("#quigon").click(function(){
                 defenderSelect(quiGon);
-                console.log("Defender is " + enemy);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
                 enemySelected = true;
                 $("#quigon").removeClass("enemies-available").addClass("defender-char");
-                $("#quigon").append($(".defender-char"));
-        }));
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#maul").click(function(){
+                defenderSelect(darthMaul);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#maul").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#sidious").click(function(){
+                defenderSelect(darthSidious);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#sidious").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
     });
-
-
+    
+    
     $("#quigon").click(function() {
         
         if(charSelected == false){
@@ -98,9 +130,45 @@ $(document).ready(function(){
             playerSelect(quiGon);
             charSelected = true;
             console.log(player);
-            $("#quigon").removeClass("available-characters").attr("your-character")
+            $("#quigon").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
+        } 
+
+        if(charSelected == true){
+            $("#obiwan").click(function(){
+                defenderSelect(obiWan);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#obiwan").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#maul").click(function(){
+                defenderSelect(darthMaul);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#maul").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#sidious").click(function(){
+                defenderSelect(darthSidious);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#sidious").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
         }
     });
 
@@ -111,9 +179,45 @@ $(document).ready(function(){
             playerSelect(darthMaul);
             charSelected = true;
             console.log(player);
-            $("#maul").removeClass("available-characters").attr("your-character")
+            $("#maul").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
+        }
+
+        if(charSelected == true){
+            $("#obiwan").click(function(){
+                defenderSelect(obiWan);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#obiwan").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#quigon").click(function(){
+                defenderSelect(quiGon);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#quigon").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#sidious").click(function(){
+                defenderSelect(darthSidious);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#sidious").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
         }
     });
 
@@ -124,14 +228,83 @@ $(document).ready(function(){
             playerSelect(darthSidious);
             charSelected = true;
             console.log(player);
-            $("#sidious").removeClass("available-characters").attr("your-character")
+            $("#sidious").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
+        }
+
+        if(charSelected == true){
+            $("#obiwan").click(function(){
+                defenderSelect(obiWan);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#obiwan").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#quigon").click(function(){
+                defenderSelect(quiGon);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#quigon").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
+        }
+
+        if(charSelected == true){
+            $("#maul").click(function(){
+                defenderSelect(darthMaul);
+                console.log("Defender character is")
+                console.log(enemy);
+                console.log("----------------------")
+                enemySelected = true;
+                $("#maul").removeClass("enemies-available").addClass("defender-char");
+                $(".defender").append($(".defender-char"));
+            });
         }
     });
 
     $("#attack").click(function(){
         console.log("You attacked!")
+        console.log("character = " + JSON.stringify(player));
+        console.log("character = " + JSON.stringify(enemy));
+
+        if(charSelected && enemySelected){
+            enemy.healthPoints = enemy.healthPoints - player.baseAttack;
+            $(".defender-char").children(".characterhp").html("Health: " +enemy.healthPoints);
+            $("#gametxt").html("<p>You attacked " + enemy.name + " for " + player.baseAttack + " damage!<p>");
+            player.baseAttack = player.attackPower + player.baseAttack;
+        
+            if(enemy.healthPoints > 0){
+                player.healthPoints = player.healthPoints - enemy.counterAP;
+                $(".player-char").children(".characterhp").html("Health: " + player.healthPoints);
+                
+                
+                if(player.healthPoints > 0){
+                    $("#gametxt").append("<p>" + enemy.name + "counter-attacked for " + enemy.counterAP + " damage!<p>");
+                }
+                
+                else{
+                gameOver = true;
+                $("#gametxt").append("<p> You have been defeated!")
+                $("#restart").show();
+                }
+            }
+
+            else{
+                enemiesDefeated++;
+                defenderSelect = false;
+                $("#gametxt").html("<p> You have defeated " + enemy.name + "! Choose a new enemy.<p>")
+                $((".defender-char")).hide();
+            }
+
+        }       
 
     });
 });
