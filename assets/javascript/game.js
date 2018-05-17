@@ -41,7 +41,7 @@ var darthSidious = {
     counterAP: 13,
 }
 
-//
+// Player & Defender select funtions
 
 function playerSelect(charSelected) {
     player.name = charSelected.name;
@@ -59,15 +59,15 @@ function defenderSelect(enemySelected) {
     enemy.counterAP = enemySelected.counterAP;
 }
 
-//
+// Funtion that moves all characters the user didn't choose to the available enemy section
 
 function setEnemies(){
     $(".available-characters").removeClass("available-characters characters").addClass("enemies-available");
     $(".enemies").append($(".enemies-available"));
 }
 
-//
 
+// Reset function that I couldn't get working... Going to keep trying to get it to work properly.
 function resetGame(){
     $("#obiwan").children(".characterhp").html("Health: " + obiWan.healthPoints);
     $("#quigon").children(".characterhp").html("Health: " + quiGon.healthPoints);
@@ -91,15 +91,17 @@ function resetGame(){
     player = {};
     enemy = {};
 }
+
 //
+
 $(document).ready(function(){
 
     $("#reset").hide();
 
+    // Selects Obi-Wan as the users character
     $("#obiwan").click(function() {
 
         if(charSelected == false){
-            $("gametxt").empty();
             playerSelect(obiWan);
             charSelected = true;
             console.log("Your character is")
@@ -110,6 +112,7 @@ $(document).ready(function(){
             setEnemies();
         }
         
+        // Selects Qui-Gon as the defender
         if(charSelected == true){
             $("#quigon").click(function(){
                 defenderSelect(quiGon);
@@ -121,7 +124,8 @@ $(document).ready(function(){
                 $(".defender").append($(".defender-char"));
             });
         }
-
+        
+        // Selects Darth Maul as the defender
         if(charSelected == true){
             $("#maul").click(function(){
                 defenderSelect(darthMaul);
@@ -133,7 +137,8 @@ $(document).ready(function(){
                 $(".defender").append($(".defender-char"));
             });
         }
-
+        
+        // Selects Darth Sidious as the defender
         if(charSelected == true){
             $("#sidious").click(function(){
                 defenderSelect(darthSidious);
@@ -151,7 +156,6 @@ $(document).ready(function(){
     $("#quigon").click(function() {
         
         if(charSelected == false){
-            $("gametxt").empty();
             playerSelect(quiGon);
             charSelected = true;
             console.log(player);
@@ -200,7 +204,6 @@ $(document).ready(function(){
     $("#maul").click(function() {
         
         if(charSelected == false){
-            $("gametxt").empty();
             playerSelect(darthMaul);
             charSelected = true;
             console.log(player);
@@ -249,7 +252,6 @@ $(document).ready(function(){
     $("#sidious").click(function() {
         
         if(charSelected == false){
-            $("gametxt").empty();
             playerSelect(darthSidious);
             charSelected = true;
             console.log(player);
@@ -295,6 +297,7 @@ $(document).ready(function(){
         }
     });
 
+    // The attack function
     $("#attack").click(function(){
         console.log("You attacked!")
         console.log("Attacker: " + JSON.stringify(player));
@@ -341,7 +344,8 @@ $(document).ready(function(){
 
     });
 
+    // I couldn't figure out how to get my game to reset properly so I took the easy route and made the reset button simply refresh the page.
     $("#reset").click(function(){
-        resetGame();
+        document.location.href="index.html";
     });
 });
