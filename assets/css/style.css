@@ -102,7 +102,7 @@ header{
     font-size: 14px;
     font-weight: 600;
 }
-#gametxt p{
+#gametxt{
     clear: both;
     margin-left: 50px;
     color: #eeeeee;

@@ -13,7 +13,7 @@ var obiWan = {
     name: "Obi-Wan",
     healthPoints: 125,
     baseAttack: 6,
-    attackPower:  9,
+    attackPower:  4,
     counterAP: 9,
 }
 
@@ -21,7 +21,7 @@ var quiGon = {
     name: "Qui-Gon",
     healthPoints: 135,
     baseAttack: 8,
-    attackPower: 9,
+    attackPower: 5,
     counterAP: 10,
 }
 
@@ -29,7 +29,7 @@ var darthMaul = {
     name: "Darth Maul",
     healthPoints: 140,
     baseAttack: 8,
-    attackPower: 10,
+    attackPower: 7,
     counterAP: 11,
 }
 
@@ -37,7 +37,7 @@ var darthSidious = {
     name: "Darth Sidious",
     healthPoints: 160,
     baseAttack: 9,
-    attackPower: 12,
+    attackPower: 9,
     counterAP: 13,
 }
 
@@ -66,6 +66,30 @@ function setEnemies(){
     $(".enemies").append($(".enemies-available"));
 }
 
+//
+
+function resetGame(){
+    $("#obiwan").children(".characterhp").html("Health: " + obiWan.healthPoints);
+    $("#quigon").children(".characterhp").html("Health: " + quiGon.healthPoints);
+    $("maul").children(".characterhp").html("Health: " + darthMaul.healthPoints);
+    $("#sidious").children(".characterhp").html("Health: " + darthSidious.healthPoints);
+    $("#obiwan").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
+    $("#quigon").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
+    $("#maul").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
+    $("#sidious").removeAttr("defender-char").removeClass("defender-char defender player-char").addClass("available-characters")
+    $(".characters").append(".available-characters")
+
+    
+    
+    $("#gametxt").empty();
+    $("#restart").hide();
+    charSelected = false;
+    enemySelected = false;
+    enemiesDefeated = 0;
+    gameOver = false;
+    player = {};
+    enemy = {};
+}
 //
 $(document).ready(function(){
 
@@ -272,8 +296,10 @@ $(document).ready(function(){
 
     $("#attack").click(function(){
         console.log("You attacked!")
-        console.log("character = " + JSON.stringify(player));
-        console.log("character = " + JSON.stringify(enemy));
+        console.log("Attacker: " + JSON.stringify(player));
+        console.log("----------------------")
+        console.log("Defender: " + JSON.stringify(enemy));
+        console.log("----------------------")
 
         if(charSelected && enemySelected){
             enemy.healthPoints = enemy.healthPoints - player.baseAttack;
@@ -293,18 +319,28 @@ $(document).ready(function(){
                 else{
                 gameOver = true;
                 $("#gametxt").append("<p> You have been defeated!")
-                $("#restart").show();
+                $("#reset").show();
                 }
             }
 
             else{
                 enemiesDefeated++;
-                defenderSelect = false;
-                $("#gametxt").html("<p> You have defeated " + enemy.name + "! Choose a new enemy.<p>")
+                (this).defenderSelect = false;
+                $("#gametxt").html("<p> You have defeated " + enemy.name + "!<p>" + "<p>Choose a new enemy.<p>")
                 $((".defender-char")).hide();
+
+                if(enemiesDefeated == 3){
+                    gameOver = true;
+                    $("#gametxt").html("<p> You won!<p>" + "<p> Play again?<p>")
+                    $("#reset").show();
+                }
             }
 
         }       
 
+    });
+
+    $("#reset").click(function(){
+        resetGame();
     });
 });
