@@ -7,28 +7,28 @@ var enemy = {}
 var enemiesDefeated = 0;
 var gameOver = false;
 
-// Characters
+// Characters - stat balancing still needed
 
 var obiWan = {
     name: "Obi-Wan",
     healthPoints: 125,
-    baseAttack: 6,
-    attackPower:  4,
+    baseAttack: 8,
+    attackPower:  5,
     counterAP: 9,
 }
 
 var quiGon = {
     name: "Qui-Gon",
     healthPoints: 135,
-    baseAttack: 8,
-    attackPower: 5,
+    baseAttack: 9,
+    attackPower: 6,
     counterAP: 10,
 }
 
 var darthMaul = {
     name: "Darth Maul",
     healthPoints: 140,
-    baseAttack: 8,
+    baseAttack: 10,
     attackPower: 7,
     counterAP: 11,
 }
@@ -36,9 +36,9 @@ var darthMaul = {
 var darthSidious = {
     name: "Darth Sidious",
     healthPoints: 160,
-    baseAttack: 9,
-    attackPower: 9,
-    counterAP: 13,
+    baseAttack: 11,
+    attackPower: 8,
+    counterAP: 12,
 }
 
 // Player & Defender select funtions
@@ -79,9 +79,6 @@ function resetGame(){
     $("#sidious").removeClass("defender-char defender player-char").addClass("available-characters")
     $(".available-characters").show();
     $(".characters").append($(this));
-
-    
-    
     $("#gametxt").empty();
     $("#restart").hide();
     charSelected = false;
@@ -92,10 +89,11 @@ function resetGame(){
     enemy = {};
 }
 
-//
+// Start of main function
 
 $(document).ready(function(){
 
+    // Hides the reset button
     $("#reset").hide();
 
     // Selects Obi-Wan as the users character
