@@ -13,32 +13,32 @@ var obiWan = {
     name: "Obi-Wan",
     healthPoints: 125,
     baseAttack: 8,
-    attackPower:  5,
-    counterAP: 9,
+    attackPower:  7,
+    counterAP: 13,
 }
 
 var quiGon = {
     name: "Qui-Gon",
     healthPoints: 135,
     baseAttack: 9,
-    attackPower: 6,
-    counterAP: 10,
+    attackPower: 8,
+    counterAP: 14,
 }
 
 var darthMaul = {
     name: "Darth Maul",
     healthPoints: 140,
     baseAttack: 10,
-    attackPower: 7,
-    counterAP: 11,
+    attackPower: 9,
+    counterAP: 15,
 }
 
 var darthSidious = {
     name: "Darth Sidious",
     healthPoints: 160,
     baseAttack: 11,
-    attackPower: 8,
-    counterAP: 12,
+    attackPower: 10,
+    counterAP: 16,
 }
 
 // Player & Defender select funtions
@@ -71,7 +71,7 @@ function setEnemies(){
 function resetGame(){
     $("#obiwan").children(".characterhp").html("Health: " + obiWan.healthPoints);
     $("#quigon").children(".characterhp").html("Health: " + quiGon.healthPoints);
-    $("maul").children(".characterhp").html("Health: " + darthMaul.healthPoints);
+    $("#maul").children(".characterhp").html("Health: " + darthMaul.healthPoints);
     $("#sidious").children(".characterhp").html("Health: " + darthSidious.healthPoints);
     $("#obiwan").removeClass("defender-char defender player-char").addClass("available-characters")
     $("#quigon").removeClass("defender-char defender player-char").addClass("available-characters")
@@ -102,9 +102,6 @@ $(document).ready(function(){
         if(charSelected == false){
             playerSelect(obiWan);
             charSelected = true;
-            console.log("Your character is")
-            console.log(player);
-            console.log("----------------------")
             $("#obiwan").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
@@ -114,9 +111,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#quigon").click(function(){
                 defenderSelect(quiGon);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#quigon").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -127,9 +121,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#maul").click(function(){
                 defenderSelect(darthMaul);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#maul").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -140,9 +131,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#sidious").click(function(){
                 defenderSelect(darthSidious);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#sidious").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -156,7 +144,6 @@ $(document).ready(function(){
         if(charSelected == false){
             playerSelect(quiGon);
             charSelected = true;
-            console.log(player);
             $("#quigon").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
@@ -165,9 +152,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#obiwan").click(function(){
                 defenderSelect(obiWan);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#obiwan").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -177,9 +161,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#maul").click(function(){
                 defenderSelect(darthMaul);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#maul").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -189,9 +170,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#sidious").click(function(){
                 defenderSelect(darthSidious);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#sidious").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -204,7 +182,6 @@ $(document).ready(function(){
         if(charSelected == false){
             playerSelect(darthMaul);
             charSelected = true;
-            console.log(player);
             $("#maul").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
@@ -213,9 +190,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#obiwan").click(function(){
                 defenderSelect(obiWan);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#obiwan").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -225,9 +199,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#quigon").click(function(){
                 defenderSelect(quiGon);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#quigon").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -237,9 +208,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#sidious").click(function(){
                 defenderSelect(darthSidious);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#sidious").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -252,7 +220,6 @@ $(document).ready(function(){
         if(charSelected == false){
             playerSelect(darthSidious);
             charSelected = true;
-            console.log(player);
             $("#sidious").removeClass("available-characters").addClass("player-char").attr("your-character")
             $("#your-character").append($(this))
             setEnemies();
@@ -261,9 +228,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#obiwan").click(function(){
                 defenderSelect(obiWan);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#obiwan").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -273,9 +237,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#quigon").click(function(){
                 defenderSelect(quiGon);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#quigon").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -285,9 +246,6 @@ $(document).ready(function(){
         if(charSelected == true){
             $("#maul").click(function(){
                 defenderSelect(darthMaul);
-                console.log("Defender character is")
-                console.log(enemy);
-                console.log("----------------------")
                 enemySelected = true;
                 $("#maul").removeClass("enemies-available").addClass("defender-char");
                 $(".defender").append($(".defender-char"));
@@ -297,13 +255,8 @@ $(document).ready(function(){
 
     // The attack function
     $("#attack").click(function(){
-        console.log("You attacked!")
-        console.log("Attacker: " + JSON.stringify(player));
-        console.log("----------------------")
-        console.log("Defender: " + JSON.stringify(enemy));
-        console.log("----------------------")
-
-        if(charSelected && enemySelected){
+        
+     if(charSelected && enemySelected){
             enemy.healthPoints = enemy.healthPoints - player.baseAttack;
             $(".defender-char").children(".characterhp").html("Health: " +enemy.healthPoints);
             $("#gametxt").html("<p>You attacked " + enemy.name + " for " + player.baseAttack + " damage!<p>");
@@ -321,6 +274,7 @@ $(document).ready(function(){
                 else{
                 gameOver = true;
                 $("#gametxt").append("<p> You have been defeated!")
+                $("#your-character").hide();
                 $("#reset").show();
                 }
             }
