@@ -16,39 +16,40 @@ header{
     width: auto;
     height: auto;
 }
+.char-avail{
+    border: 3px solid green;
+}
 #obiwan{
     float: left;
     padding: 5px 25px;
     background-color: #eeeeee;
-    border: 3px solid green;
 }
 #quigon{
     float: left;
     padding: 5px 25px;
     background-color: #eeeeee;
-    border: 3px solid green;
 }
 #maul{
     float: left;
     padding: 5px 25px;
     background-color: #eeeeee;
-    border: 3px solid green;
 }
 #sidious{
     float: left;
     padding: 5px 25px;
     background-color: #eeeeee;
-    border: 3px solid green;
 }
 .charactername{
     text-align: center;
     font-weight: 600;
-    font-size: 14px
+    font-size: 14px;
+    color: black;
 }
 .characterhp{
     text-align: center;
     font-weight: 600;
     font-size: 14px;
+    color: black;
 }
 .battle{
     padding-left: 50px;
@@ -57,7 +58,9 @@ header{
     clear: both;
     color: #eeeeee;
     font-size: 36px;
-    
+}
+.user-char{
+    border: 3px solid green;
 }
 #your-character{
     color: black;
@@ -69,6 +72,10 @@ header{
     color: #eeeeee;
     font-size: 36px;
     padding-top: 100px;
+    margin-left: 50px;
+}
+.enemy-char{
+    border: 3px solid red;
 }
 .enemies-available{
     clear: both;
