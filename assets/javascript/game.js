@@ -11,7 +11,8 @@ const init = function () {
             attackPower: 7,
             counterAP: 13,
             playerChar: null,
-            enemyChar: null
+            enemyChar: null,
+            isSith: false
         },
         quiGon: {
             name: "Qui-Gon",
@@ -20,7 +21,8 @@ const init = function () {
             attackPower: 8,
             counterAP: 14,
             playerChar: null,
-            enemyChar: null
+            enemyChar: null,
+            isSith: false
         },
         darthMaul: {
             name: "Darth Maul",
@@ -29,7 +31,8 @@ const init = function () {
             attackPower: 9,
             counterAP: 15,
             playerChar: null,
-            enemyChar: null
+            enemyChar: null,
+            isSith: true
         },
         darthSidious: {
             name: "Darth Sidious",
@@ -38,7 +41,8 @@ const init = function () {
             attackPower: 10,
             counterAP: 16,
             playerChar: null,
-            enemyChar: null
+            enemyChar: null,
+            isSith: true
         }
     };
 
@@ -114,24 +118,36 @@ const init = function () {
             };
         });
 
-        $("#attack").on('click', function () {
+    });
+    $("#attack").on('click', function () {
 
-            //Player attack
-            enemy.healthPoints = enemy.healthPoints - player.baseAttack;
-            //Enemy attack
-            player.healthPoints = player.healthPoints - enemy.baseAttack;
-            $(".defender-char").children(".characterhp").html(`Health: ${enemy.healthPoints}`);
-            $(".user-char").children(".characterhp").html(`Health: ${player.healthPoints}`);
-            $("#gametxt").html(`<p>You attacked ${enemy.name} for ${player.baseAttack} damage!<p>`);
-            //Player AP increase
-            player.baseAttack = player.baseAttack + player.attackPower;
-            
-            if(enemy.healthPoints <= 0) {
-                $("#defender-char").html("");
-            }
+        let defeatedNME = 0;
 
-        });
+        //Player attack
+        enemy.healthPoints = enemy.healthPoints - player.baseAttack;
+        //Enemy attack
+        player.healthPoints = player.healthPoints - enemy.baseAttack;
+        $(".defender-char").children(".characterhp").html(`Health: ${enemy.healthPoints}`);
+        $(".user-char").children(".characterhp").html(`Health: ${player.healthPoints}`);
+        $("#gametxt").html(`<p>You attacked ${enemy.name} for ${player.baseAttack} damage!</p>`);
+        //Player AP increase
+        player.baseAttack = player.attackPower + player.baseAttack;
+
+        if (enemy.healthPoints <= 0 && enemy.enemyChar === true) {
+            $("#defender-char").html("");
+            $("#gametxt").html(`<p>You have defeated ${enemy.name}! Choose your next opponent.`);
+            defeatedNME++;
+        }
+        if (player.healthPoints <= 0 && player.playerChar === true) {
+            $("#gametxt").html(`<p>Game over! You've been bested.`);
+        }
+        if (defeatedNME == 3) {
+            $("#gametxt").html(`<p>You are victorious!</p>`);
+        }
+    });
+    //reset the game
+    $("#reset").on('click', function() {
+        window.location.reload();
     });
 };
-
 window.addEventListener('load', init());
