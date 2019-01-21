@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
     <meta charset="UTF-8">
     <title>Star Wars Duel</title>
@@ -9,62 +10,64 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel">
     <!--Javascript & JQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
 </head>
+
 <body>
-<header>
-    Star Wars Duel!
-</header>
+    <header>
+        Star Wars Duel!
+    </header>
 
-<div class="container">
-    <div class="characters available-characters">
-        <div id="obiwan" value="obiwan">
-            <div class="charactername">Obi-Wan</div> 
-            <img src="assets/images/obi-wan.jpg" height="150" width="200">
-            <div class="characterhp">Health: 125</div>
+    <div class="container">
+        <div class="available-characters">
+            <div class="char-avail characters" id="obiwan" value="obiwan">
+                <div class="charactername">Obi-Wan</div>
+                <img src="assets/images/obi-wan.jpg" height="150" width="200">
+                <div class="characterhp">Health: 125</div>
+            </div>
+            <div class="char-avail characters" id="quigon" value="quigon">
+                <div class="charactername">Qui-Gon</div>
+                <img src="assets/images/qui-gon.jpg" height="150" width="200">
+                <div class="characterhp">Health: 135</div>
+            </div>
+            <div class="char-avail characters" id="maul" value="maul">
+                <div class="charactername">Darth Maul</div>
+                <img src="assets/images/darth-maul.jpg" height="150" width="200">
+                <div class="characterhp">Health: 140</div>
+            </div>
+            <div class="char-avail characters" id="sidious" value="sidious">
+                <div class="charactername">Darth Sidious</div>
+                <img src="assets/images/darth-sidious.jpg" height="150" width="200">
+                <div class="characterhp">Health: 160</div>
+            </div>
         </div>
-        <div id="quigon" value="quigon">
-            <div class="charactername">Qui-Gon</div>
-            <img src="assets/images/qui-gon.jpg" height="150" width="200">
-            <div class="characterhp">Health: 135</div> 
-        </div>
-        <div id="maul" value="maul">
-            <div class="charactername">Darth Maul</div>
-            <img src="assets/images/darth-maul.jpg" height="150" width="200">
-            <div class="characterhp">Health: 140</div> 
-        </div>
-        <div id="sidious" value="sidious">
-            <div class="charactername">Darth Sidious</div>
-            <img src="assets/images/darth-sidious.jpg" height="150" width="200">
-            <div class="characterhp">Health: 160</div> 
-        </div>
-    </div>
 
-    <div class="battle">
-        <div class="user-character">
-            Your Character
-        <div class="player-char" id="your-character"></div>
+        <div class="battle">
+            <div class="user-character">
+                Your Character
+                <div class="player-char" id="your-character"></div>
+            </div>
+            <div class="fight">
+                Fight Section
+            </div>
         </div>
+        <button type="button" id="attack">
+            Attack!
+        </button>
+        <div class="defender">
+            Defender
+            <div id="defender-char"></div>
+        </div>
+        <div id="gametxt"></div>
+        <button type="button" id="reset" href="index.html">
+            Reset
+        </button>
         <div class="enemies">
             Enemies Available To Attack
-        <div class="enemies-available"></div>
+            <div class="enemies-available"></div>
         </div>
-        <div class="fight">
-            Fight Section
-        </div>
-    </div>
-    <button type="button" id="attack">
-        Attack!
-    </button>
-    <div class="defender">
-        Defender
-        <div id="defender-char"></div>
-    </div>
-    <div id="gametxt"></div>
-    <button type="button" id="reset" href="index.html">
-        Reset
-    </button>
 
-</div>
+    </div>
 </body>
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+
 </html>

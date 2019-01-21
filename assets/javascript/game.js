@@ -1,303 +1,153 @@
-// Global variables
 
-var charSelected = false;
-var enemySelected = false;
-var player = {}
-var enemy = {}
-var enemiesDefeated = 0;
-var gameOver = false;
+const init = function () {
 
-// Characters - stat balancing still needed
-
-var obiWan = {
-    name: "Obi-Wan",
-    healthPoints: 125,
-    baseAttack: 8,
-    attackPower:  7,
-    counterAP: 13,
-}
-
-var quiGon = {
-    name: "Qui-Gon",
-    healthPoints: 135,
-    baseAttack: 9,
-    attackPower: 8,
-    counterAP: 14,
-}
-
-var darthMaul = {
-    name: "Darth Maul",
-    healthPoints: 140,
-    baseAttack: 10,
-    attackPower: 9,
-    counterAP: 15,
-}
-
-var darthSidious = {
-    name: "Darth Sidious",
-    healthPoints: 160,
-    baseAttack: 11,
-    attackPower: 10,
-    counterAP: 16,
-}
-
-// Player & Defender select funtions
-
-function playerSelect(charSelected) {
-    player.name = charSelected.name;
-    player.healthPoints = charSelected.healthPoints;
-    player.baseAttack = charSelected.baseAttack;
-    player.attackPower = charSelected.attackPower;
-    player.counterAP = charSelected.counterAP;
-}
-
-function defenderSelect(enemySelected) {
-    enemy.name = enemySelected.name;
-    enemy.healthPoints = enemySelected.healthPoints;
-    enemy.baseAttack = enemySelected.baseAttack;
-    enemy.attackPower = enemySelected.attackPower;
-    enemy.counterAP = enemySelected.counterAP;
-}
-
-// Funtion that moves all characters the user didn't choose to the available enemy section
-
-function setEnemies(){
-    $(".available-characters").removeClass("available-characters characters").addClass("enemies-available");
-    $(".enemies").append($(".enemies-available"));
-}
-
-
-// Reset function that I couldn't get working... Going to keep trying to get it to work properly.
-function resetGame(){
-    $("#obiwan").children(".characterhp").html("Health: " + obiWan.healthPoints);
-    $("#quigon").children(".characterhp").html("Health: " + quiGon.healthPoints);
-    $("#maul").children(".characterhp").html("Health: " + darthMaul.healthPoints);
-    $("#sidious").children(".characterhp").html("Health: " + darthSidious.healthPoints);
-    $("#obiwan").removeClass("defender-char defender player-char").addClass("available-characters")
-    $("#quigon").removeClass("defender-char defender player-char").addClass("available-characters")
-    $("#maul").removeClass("defender-char defender player-char").addClass("available-characters")
-    $("#sidious").removeClass("defender-char defender player-char").addClass("available-characters")
-    $(".available-characters").show();
-    $(".characters").append($(this));
-    $("#gametxt").empty();
-    $("#restart").hide();
-    charSelected = false;
-    enemySelected = false;
-    enemiesDefeated = 0;
-    gameOver = false;
-    player = {};
-    enemy = {};
-}
-
-// Start of main function
-
-$(document).ready(function(){
-
-    // Hides the reset button
-    $("#reset").hide();
-
-    // Selects Obi-Wan as the users character
-    $("#obiwan").click(function() {
-
-        if(charSelected == false){
-            playerSelect(obiWan);
-            charSelected = true;
-            $("#obiwan").removeClass("available-characters").addClass("player-char").attr("your-character")
-            $("#your-character").append($(this))
-            setEnemies();
+    let player = {};
+    let enemy = {};
+    let characters = {
+        obiWan: {
+            name: "Obi-Wan",
+            healthPoints: 125,
+            baseAttack: 8,
+            attackPower: 7,
+            counterAP: 13,
+            playerChar: null,
+            enemyChar: null,
+            isSith: false
+        },
+        quiGon: {
+            name: "Qui-Gon",
+            healthPoints: 135,
+            baseAttack: 9,
+            attackPower: 8,
+            counterAP: 14,
+            playerChar: null,
+            enemyChar: null,
+            isSith: false
+        },
+        darthMaul: {
+            name: "Darth Maul",
+            healthPoints: 140,
+            baseAttack: 10,
+            attackPower: 9,
+            counterAP: 15,
+            playerChar: null,
+            enemyChar: null,
+            isSith: true
+        },
+        darthSidious: {
+            name: "Darth Sidious",
+            healthPoints: 160,
+            baseAttack: 11,
+            attackPower: 10,
+            counterAP: 16,
+            playerChar: null,
+            enemyChar: null,
+            isSith: true
         }
-        
-        // Selects Qui-Gon as the defender
-        if(charSelected == true){
-            $("#quigon").click(function(){
-                defenderSelect(quiGon);
-                enemySelected = true;
-                $("#quigon").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-        
-        // Selects Darth Maul as the defender
-        if(charSelected == true){
-            $("#maul").click(function(){
-                defenderSelect(darthMaul);
-                enemySelected = true;
-                $("#maul").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-        
-        // Selects Darth Sidious as the defender
-        if(charSelected == true){
-            $("#sidious").click(function(){
-                defenderSelect(darthSidious);
-                enemySelected = true;
-                $("#sidious").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-    });
-    
-    
-    $("#quigon").click(function() {
-        
-        if(charSelected == false){
-            playerSelect(quiGon);
-            charSelected = true;
-            $("#quigon").removeClass("available-characters").addClass("player-char").attr("your-character")
-            $("#your-character").append($(this))
-            setEnemies();
-        } 
+    };
 
-        if(charSelected == true){
-            $("#obiwan").click(function(){
-                defenderSelect(obiWan);
-                enemySelected = true;
-                $("#obiwan").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
+    $(".available-characters").children().on('click', function () {
 
-        if(charSelected == true){
-            $("#maul").click(function(){
-                defenderSelect(darthMaul);
-                enemySelected = true;
-                $("#maul").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
+        $(this).removeClass("char-avail");
+        let charID = $(this).attr("id");
+        let moveChar = $(this).addClass("user-char").removeClass("char-avail");
+        let enemyChars = $(this).parent().children(".char-avail").addClass("enemy-char").removeClass("char-avail");
 
-        if(charSelected == true){
-            $("#sidious").click(function(){
-                defenderSelect(darthSidious);
-                enemySelected = true;
-                $("#sidious").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-    });
+        for (let i = 0; i < enemyChars.length; i++) {
 
-    $("#maul").click(function() {
-        
-        if(charSelected == false){
-            playerSelect(darthMaul);
-            charSelected = true;
-            $("#maul").removeClass("available-characters").addClass("player-char").attr("your-character")
-            $("#your-character").append($(this))
-            setEnemies();
-        }
+            switch (charID) {
+                case "obiwan":
+                    $(".user-character").append(moveChar);
+                    player = characters.obiWan;
+                    player.playerChar = true;
+                    $(".enemies").append(enemyChars)[i];
+                    return;
+                case "quigon":
+                    $(".user-character").append(moveChar);
+                    player = characters.quiGon;
+                    player.playerChar = true;
+                    $(".enemies").append(enemyChars)[i];
+                    return;
+                case "maul":
+                    $(".user-character").append(moveChar);
+                    player = characters.darthMaul;
+                    player.playerChar = true;
+                    $(".enemies").append(enemyChars)[i];
+                    return;
+                case "sidious":
+                    $(".user-character").append(moveChar);
+                    player = characters.darthSidious;
+                    player.playerChar = true;
+                    $(".enemies").append(enemyChars)[i];
+                    return;
+                default:
+                    console.log("Something went wrong");
+                    break;
+            };
+        };
 
-        if(charSelected == true){
-            $("#obiwan").click(function(){
-                defenderSelect(obiWan);
-                enemySelected = true;
-                $("#obiwan").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
+        $(".enemies").children().on('click', function () {
 
-        if(charSelected == true){
-            $("#quigon").click(function(){
-                defenderSelect(quiGon);
-                enemySelected = true;
-                $("#quigon").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
+            let charID = $(this).attr("id");
+            let defender = $(this).addClass("defender-char").removeClass("user-char enemies");
 
-        if(charSelected == true){
-            $("#sidious").click(function(){
-                defenderSelect(darthSidious);
-                enemySelected = true;
-                $("#sidious").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-    });
-
-    $("#sidious").click(function() {
-        
-        if(charSelected == false){
-            playerSelect(darthSidious);
-            charSelected = true;
-            $("#sidious").removeClass("available-characters").addClass("player-char").attr("your-character")
-            $("#your-character").append($(this))
-            setEnemies();
-        }
-
-        if(charSelected == true){
-            $("#obiwan").click(function(){
-                defenderSelect(obiWan);
-                enemySelected = true;
-                $("#obiwan").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-
-        if(charSelected == true){
-            $("#quigon").click(function(){
-                defenderSelect(quiGon);
-                enemySelected = true;
-                $("#quigon").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-
-        if(charSelected == true){
-            $("#maul").click(function(){
-                defenderSelect(darthMaul);
-                enemySelected = true;
-                $("#maul").removeClass("enemies-available").addClass("defender-char");
-                $(".defender").append($(".defender-char"));
-            });
-        }
-    });
-
-    // The attack function
-    $("#attack").click(function(){
-        
-     if(charSelected && enemySelected){
-            enemy.healthPoints = enemy.healthPoints - player.baseAttack;
-            $(".defender-char").children(".characterhp").html("Health: " +enemy.healthPoints);
-            $("#gametxt").html("<p>You attacked " + enemy.name + " for " + player.baseAttack + " damage!<p>");
-            player.baseAttack = player.attackPower + player.baseAttack;
-        
-            if(enemy.healthPoints > 0){
-                player.healthPoints = player.healthPoints - enemy.counterAP;
-                $(".player-char").children(".characterhp").html("Health: " + player.healthPoints);
-                
-                
-                if(player.healthPoints > 0){
-                    $("#gametxt").append("<p>" + enemy.name + "counter-attacked for " + enemy.counterAP + " damage!<p>");
-                }
-                
-                else{
-                gameOver = true;
-                $("#gametxt").append("<p> You have been defeated!")
-                $("#your-character").hide();
-                $("#reset").show();
-                }
-            }
-
-            else{
-                enemiesDefeated++;
-                (this).defenderSelect = false;
-                $("#gametxt").html("<p> You have defeated " + enemy.name + "!<p>" + "<p>Choose a new enemy.<p>")
-                $((".defender-char")).hide();
-
-                if(enemiesDefeated == 3){
-                    gameOver = true;
-                    $("#gametxt").html("<p> You won!<p>" + "<p> Play again?<p>")
-                    $("#reset").show();
-                }
-            }
-
-        }       
+            switch (charID) {
+                case "obiwan":
+                    $("#defender-char").append(defender);
+                    enemy = characters.obiWan;
+                    enemy.enemyChar = true;
+                    break;
+                case "quigon":
+                    $("#defender-char").append(defender);
+                    enemy = characters.quiGon;
+                    enemy.enemyChar = true;
+                    break;
+                case "maul":
+                    $("#defender-char").append(defender);
+                    enemy = characters.darthMaul;
+                    enemy.enemyChar = true;
+                    break;
+                case "sidious":
+                    $("#defender-char").append(defender);
+                    enemy = characters.darthSidious;
+                    enemy.enemyChar = true;
+                    break;
+                default:
+                    console.log("Something went wrong");
+                    break;
+            };
+        });
 
     });
+    $("#attack").on('click', function () {
 
-    // I couldn't figure out how to get my game to reset properly so I took the easy route and made the reset button simply refresh the page.
-    $("#reset").click(function(){
-        document.location.href="index.html";
+        let defeatedNME = 0;
+
+        //Player attack
+        enemy.healthPoints = enemy.healthPoints - player.baseAttack;
+        //Enemy attack
+        player.healthPoints = player.healthPoints - enemy.baseAttack;
+        $(".defender-char").children(".characterhp").html(`Health: ${enemy.healthPoints}`);
+        $(".user-char").children(".characterhp").html(`Health: ${player.healthPoints}`);
+        $("#gametxt").html(`<p>You attacked ${enemy.name} for ${player.baseAttack} damage!</p>`);
+        //Player AP increase
+        player.baseAttack = player.attackPower + player.baseAttack;
+
+        if (enemy.healthPoints <= 0 && enemy.enemyChar === true) {
+            $("#defender-char").html("");
+            $("#gametxt").html(`<p>You have defeated ${enemy.name}! Choose your next opponent.`);
+            defeatedNME++;
+        }
+        if (player.healthPoints <= 0 && player.playerChar === true) {
+            $("#gametxt").html(`<p>Game over! You've been bested.`);
+        }
+        if (defeatedNME == 3) {
+            $("#gametxt").html(`<p>You are victorious!</p>`);
+        }
     });
-});
+    //reset the game
+    $("#reset").on('click', function() {
+        window.location.reload();
+    });
+};
+window.addEventListener('load', init());
