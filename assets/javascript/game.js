@@ -1,6 +1,4 @@
-
 const init = function () {
-
     let player = {};
     let enemy = {};
     let characters = {
@@ -45,16 +43,14 @@ const init = function () {
             isSith: true
         }
     };
-
     $(".available-characters").children().on('click', function () {
-
+        console.log(this);
         $(this).removeClass("char-avail");
         let charID = $(this).attr("id");
         let moveChar = $(this).addClass("user-char").removeClass("char-avail");
         let enemyChars = $(this).parent().children(".char-avail").addClass("enemy-char").removeClass("char-avail");
 
         for (let i = 0; i < enemyChars.length; i++) {
-
             switch (charID) {
                 case "obiwan":
                     $(".user-character").append(moveChar);
@@ -85,12 +81,9 @@ const init = function () {
                     break;
             };
         };
-
         $(".enemies").children().on('click', function () {
-
             let charID = $(this).attr("id");
             let defender = $(this).addClass("defender-char").removeClass("user-char enemies");
-
             switch (charID) {
                 case "obiwan":
                     $("#defender-char").append(defender);
@@ -117,16 +110,14 @@ const init = function () {
                     break;
             };
         });
-
     });
     $("#attack").on('click', function () {
-
         let defeatedNME = 0;
-
         //Player attack
         enemy.healthPoints = enemy.healthPoints - player.baseAttack;
         //Enemy attack
         player.healthPoints = player.healthPoints - enemy.baseAttack;
+        //Update DOM
         $(".defender-char").children(".characterhp").html(`Health: ${enemy.healthPoints}`);
         $(".user-char").children(".characterhp").html(`Health: ${player.healthPoints}`);
         $("#gametxt").html(`<p>You attacked ${enemy.name} for ${player.baseAttack} damage!</p>`);
@@ -145,7 +136,7 @@ const init = function () {
             $("#gametxt").html(`<p>You are victorious!</p>`);
         }
     });
-    //reset the game
+    //Reset the game
     $("#reset").on('click', function() {
         window.location.reload();
     });
